@@ -10,10 +10,20 @@ export async function GET() {
       .where(eq(projects.isFeatured, true))
       .orderBy(desc(projects.stars), desc(projects.githubUpdatedAt));
 
-    // Parse topics JSON for each project
+    // Parse topics JSON and map database columns to expected interface
     const projectsWithParsedTopics = featuredProjects.map(project => ({
-      ...project,
-      topics: project.topics ? JSON.parse(project.topics) : []
+      id: project.id,
+      name: project.name,
+      description: project.description,
+      html_url: project.url, // Map 'url' to 'html_url'
+      homepage: project.homepage,
+      language: project.language,
+      stargazers_count: project.stars, // Map 'stars' to 'stargazers_count'
+      topics: project.topics ? JSON.parse(project.topics) : [],
+      created_at: project.createdAt,
+      updated_at: project.githubUpdatedAt || project.updatedAt,
+      featured: project.isFeatured,
+      display_order: project.displayOrder
     }));
 
     return NextResponse.json({
