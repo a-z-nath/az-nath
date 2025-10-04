@@ -1,18 +1,18 @@
 export default function Footer() {
   return (
-    <footer className="py-8 px-4 sm:px-6 border-t border-gray-800">
+    <footer className="py-8 px-4 sm:px-6 border-t border-border">
       <div className="max-w-2xl mx-auto">
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div className="text-gray-400 text-sm">
-            © 2025 Avizith Debnath. Built with passion and{' '}
-            <span className="text-amber-600">Tailwind CSS</span>
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <div className="text-center text-muted-foreground text-sm">
+            © 2025 Avizith Debnath.<br />Built with{' '}
+            <span className="text-primary"> Love</span> and <span className="text-primary">Passion</span>
           </div>
-          <div className="flex gap-6">
+          {/* <div className="flex gap-6">
             <a 
               href="https://github.com/a-z-nath" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-amber-600 transition-colors"
+              className="text-muted-foreground hover:text-primary transition-colors"
               aria-label="GitHub"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -23,7 +23,7 @@ export default function Footer() {
               href="https://linkedin.com/in/a-z-nath" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-amber-600 transition-colors"
+              className="text-muted-foreground hover:text-primary transition-colors"
               aria-label="LinkedIn"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -32,14 +32,14 @@ export default function Footer() {
             </a>
             <a 
               href="mailto:at.avijit.deb@gmail.com" 
-              className="text-gray-400 hover:text-amber-600 transition-colors"
+              className="text-muted-foreground hover:text-primary transition-colors"
               aria-label="Email"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

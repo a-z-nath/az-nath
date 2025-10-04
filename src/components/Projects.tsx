@@ -68,15 +68,15 @@ export default function Projects() {
     return (
       <section id="projects" className="py-20 px-4 sm:px-6">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-12 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-12 text-center">
             Featured Projects
           </h2>
           <div className="grid gap-6">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-gray-800/50 rounded-lg p-6 animate-pulse">
-                <div className="h-4 bg-gray-700 rounded w-3/4 mb-4"></div>
-                <div className="h-3 bg-gray-700 rounded w-full mb-2"></div>
-                <div className="h-3 bg-gray-700 rounded w-2/3"></div>
+              <div key={i} className="bg-card/50 rounded-lg p-6 animate-pulse border border-border">
+                <div className="h-4 bg-muted rounded w-3/4 mb-4"></div>
+                <div className="h-3 bg-muted rounded w-full mb-2"></div>
+                <div className="h-3 bg-muted rounded w-2/3"></div>
               </div>
             ))}
           </div>
@@ -89,11 +89,11 @@ export default function Projects() {
     return (
       <section id="projects" className="py-20 px-4 sm:px-6">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-12">
             Featured Projects
           </h2>
-          <div className="bg-red-900/20 border border-red-700 rounded-lg p-6">
-            <p className="text-red-400">Error loading projects: {error}</p>
+          <div className="bg-destructive/20 border border-destructive rounded-lg p-6">
+            <p className="text-destructive-foreground">Error loading projects: {error}</p>
           </div>
         </div>
       </section>
@@ -103,13 +103,13 @@ export default function Projects() {
   return (
     <section id="projects" className="py-20 px-4 sm:px-6">
       <div className="max-w-2xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-12 text-center">
+        <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-12 text-center">
           Featured Projects
         </h2>
         
         {projects.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-400 text-lg">
+            <p className="text-muted-foreground text-lg">
               No featured projects found. Make sure to add the "featured" topic to your GitHub repositories!
             </p>
           </div>
@@ -118,13 +118,13 @@ export default function Projects() {
             {projects.map((project) => (
               <div 
                 key={project.id}
-                className="group bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-lg p-6 hover:border-amber-600/50 transition-all duration-300 hover:transform hover:-translate-y-1"
+                className="group bg-card/50 backdrop-blur-sm border border-border rounded-lg p-6 hover:border-primary/50 transition-all duration-300 hover:transform hover:-translate-y-1"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-                  <h3 className="text-xl font-semibold text-white group-hover:text-amber-600 transition-colors mb-2 sm:mb-0">
+                  <h3 className="text-xl font-semibold text-primary group-hover:text-primary/95 transition-colors mb-2 sm:mb-0">
                     {project.name}
                   </h3>
-                  <div className="flex items-center gap-4 text-sm text-gray-400">
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
                     {project.language && (
                       <div className="flex items-center gap-2">
                         <div 
@@ -144,7 +144,7 @@ export default function Projects() {
                 </div>
 
                 {project.description && (
-                  <p className="text-gray-300 mb-4 leading-relaxed">
+                  <p className="text-card-foreground mb-4 leading-relaxed">
                     {project.description}
                   </p>
                 )}
@@ -154,7 +154,7 @@ export default function Projects() {
                     {project.topics.map((topic) => (
                       <span 
                         key={topic}
-                        className="px-2 py-1 bg-gray-700/50 text-gray-300 text-xs rounded-md"
+                        className="px-2 py-1 bg-secondary text-secondary-foreground text-xs rounded-md"
                       >
                         {topic}
                       </span>
@@ -167,7 +167,7 @@ export default function Projects() {
                     href={project.html_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-gray-700 text-gray-300 rounded-lg hover:bg-gray-600 transition-colors text-sm"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors text-sm"
                   >
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -179,7 +179,7 @@ export default function Projects() {
                       href={project.homepage}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-amber-600 text-gray-900 rounded-lg hover:bg-amber-700 transition-colors text-sm font-medium"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

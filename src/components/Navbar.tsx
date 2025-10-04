@@ -5,9 +5,13 @@ import { useEffect, useState } from 'react';
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    // Check if dark mode is already set
+    const isDarkMode = document.documentElement.classList.contains('dark');
+    setIsDark(isDarkMode);
   }, []);
 
   useEffect(() => {
@@ -29,31 +33,54 @@ export default function Navbar() {
     }
   };
 
+  const toggleDarkMode = () => {
+    if (!mounted) return;
+    const newDarkMode = !isDark;
+    setIsDark(newDarkMode);
+    
+    if (newDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('darkMode', 'true');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('darkMode', 'false');
+    }
+  };
+
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-gray-900/80 backdrop-blur-lg border-b border-gray-800/50' 
+          ? 'bg-background/80 backdrop-blur-lg border-b border-border' 
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-4">
         <div className="flex justify-between items-center">
-          <div className="text-xl font-bold text-amber-600">
+          <div className="text-xl font-bold text-primary">
             &lt;a-z-nath/&gt;
           </div>
-          <div className="flex space-x-6 text-sm">
+          <div className="flex items-center space-x-6">
+            <div className="flex space-x-6 text-sm">
+              <button 
+                onClick={() => scrollToSection('projects')}
+                className="text-foreground hover:text-primary transition-colors"
+              >
+                Projects
+              </button>
+              <button 
+                onClick={() => scrollToSection('contact')}
+                className="text-foreground hover:text-primary transition-colors"
+              >
+                Contact
+              </button>
+            </div>
             <button 
-              onClick={() => scrollToSection('projects')}
-              className="text-gray-300 hover:text-amber-600 transition-colors"
+              onClick={toggleDarkMode}
+              className="text-foreground hover:text-primary transition-colors text-lg"
+              aria-label="Toggle dark mode"
             >
-              Projects
-            </button>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="text-gray-300 hover:text-amber-600 transition-colors"
-            >
-              Contact
+              {isDark ? '☀️' : '🌙'}
             </button>
           </div>
         </div>
