@@ -4,13 +4,12 @@ export default function Footer() {
       <div className="max-w-2xl mx-auto">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="text-gray-400 text-sm">
-            © 2024 Avizith. Built with{' '}
-            <span className="text-amber-600">Next.js</span> and{' '}
+            © 2025 Avizith Debnath. Built with passion and{' '}
             <span className="text-amber-600">Tailwind CSS</span>
           </div>
           <div className="flex gap-6">
             <a 
-              href="https://github.com/avizith" 
+              href="https://github.com/a-z-nath" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-amber-600 transition-colors"
@@ -21,7 +20,7 @@ export default function Footer() {
               </svg>
             </a>
             <a 
-              href="https://linkedin.com/in/avizith" 
+              href="https://linkedin.com/in/a-z-nath" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-amber-600 transition-colors"
@@ -32,7 +31,7 @@ export default function Footer() {
               </svg>
             </a>
             <a 
-              href="mailto:avizith@example.com" 
+              href="mailto:at.avijit.deb@gmail.com" 
               className="text-gray-400 hover:text-amber-600 transition-colors"
               aria-label="Email"
             >

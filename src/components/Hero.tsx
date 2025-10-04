@@ -34,9 +34,11 @@ export default function Hero() {
           <div className="flex justify-center sm:justify-start">
             <div className="relative group">
               <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-amber-600 to-orange-700 p-1">
-                <div className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center">
-                  <span className="text-2xl sm:text-3xl font-bold text-amber-600">AZ</span>
-                </div>
+                <img 
+                  src="https://avatars.githubusercontent.com/u/107170125?s=200&v=4" 
+                  alt="Avizith Debnath" 
+                  className="w-full h-full rounded-full object-cover transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-105"
+                />
               </div>
             </div>
           </div>
@@ -46,7 +48,7 @@ export default function Hero() {
             <div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
                 Hi, I'm{' '}
-                <span className="text-amber-600">Avizith</span>
+                <span className="text-amber-600">Avizith Debnath</span>
               </h1>
               <div className="h-8 sm:h-10">
                 <p className="text-xl sm:text-2xl text-gray-300 transition-all duration-500">
@@ -56,8 +58,8 @@ export default function Hero() {
             </div>
 
             <p className="text-lg text-gray-400 max-w-xl mx-auto sm:mx-0 leading-relaxed">
-              Passionate about creating elegant solutions to complex problems. 
-              I build modern web applications with cutting-edge technologies.
+              4th-year Computer Science student at SUST. I love building new things and fixing broken ones. 
+              Always excited about learning new technologies.
             </p>
 
             {/* CTA Buttons */}
@@ -79,7 +81,7 @@ export default function Hero() {
             {/* Social Links */}
             <div className="flex gap-6 justify-center sm:justify-start pt-4">
               <a 
-                href="https://github.com/avizith" 
+                href="https://github.com/a-z-nath" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-amber-600 transition-colors"
@@ -89,7 +91,7 @@ export default function Hero() {
                 </svg>
               </a>
               <a 
-                href="https://linkedin.com/in/avizith" 
+                href="https://linkedin.com/in/a-z-nath" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-amber-600 transition-colors"
@@ -99,7 +101,7 @@ export default function Hero() {
                 </svg>
               </a>
               <a 
-                href="mailto:avizith@example.com" 
+                href="mailto:at.avijit.deb@gmail.com" 
                 className="text-gray-400 hover:text-amber-600 transition-colors"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

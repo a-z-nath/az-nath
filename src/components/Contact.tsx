@@ -20,24 +20,20 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    // Simulate form submission (replace with actual form handler)
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // For demo purposes, we'll just show success
-      // In real implementation, you'd send this to your preferred form service
-      console.log('Form submitted:', formData);
-      
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
+    
+    // Create mailto link with form data
+    const subject = encodeURIComponent(`Portfolio Contact: ${formData.name}`);
+    const body = encodeURIComponent(
+      `Hi Avizith,\n\n${formData.message}\n\nBest regards,\n${formData.name}\n${formData.email}`
+    );
+    const mailtoLink = `mailto:at.avijit.deb@gmail.com?subject=${subject}&body=${body}`;
+    
+    // Open user's email client
+    window.location.href = mailtoLink;
+    
+    // Show success message
+    setSubmitStatus('success');
+    setFormData({ name: '', email: '', message: '' });
   };
 
   return (
@@ -66,8 +62,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-gray-300 font-medium">Email</p>
-                    <a href="mailto:avizith@example.com" className="text-amber-600 hover:text-amber-500 transition-colors">
-                      avizith@example.com
+                    <a href="mailto:at.avijit.deb@gmail.com" className="text-amber-600 hover:text-amber-500 transition-colors">
+                      at.avijit.deb@gmail.com
                     </a>
                   </div>
                 </div>
@@ -81,12 +77,12 @@ export default function Contact() {
                   <div>
                     <p className="text-gray-300 font-medium">GitHub</p>
                     <a 
-                      href="https://github.com/avizith" 
+                      href="https://github.com/a-z-nath" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-amber-600 hover:text-amber-500 transition-colors"
                     >
-                      github.com/avizith
+                      github.com/a-z-nath
                     </a>
                   </div>
                 </div>
@@ -100,12 +96,12 @@ export default function Contact() {
                   <div>
                     <p className="text-gray-300 font-medium">LinkedIn</p>
                     <a 
-                      href="https://linkedin.com/in/avizith" 
+                      href="https://linkedin.com/in/a-z-nath" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-amber-600 hover:text-amber-500 transition-colors"
                     >
-                      linkedin.com/in/avizith
+                      linkedin.com/in/a-z-nath
                     </a>
                   </div>
                 </div>
@@ -185,7 +181,7 @@ export default function Contact() {
               {submitStatus === 'success' && (
                 <div className="p-4 bg-green-900/20 border border-green-700 rounded-lg">
                   <p className="text-green-400 text-sm">
-                    ✓ Message sent successfully! I'll get back to you soon.
+                    ✓ Email client opened! Your message has been pre-filled - just click send.
                   </p>
                 </div>
               )}
