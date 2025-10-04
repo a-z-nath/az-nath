@@ -63,6 +63,12 @@ export default function Navbar() {
           <div className="flex items-center space-x-6">
             <div className="flex space-x-6 text-sm">
               <button 
+                onClick={() => scrollToSection('skills')}
+                className="text-foreground hover:text-primary transition-colors"
+              >
+                Skills
+              </button>
+              <button 
                 onClick={() => scrollToSection('projects')}
                 className="text-foreground hover:text-primary transition-colors"
               >
