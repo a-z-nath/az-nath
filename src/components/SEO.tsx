@@ -15,7 +15,7 @@ export default function SEO({
   canonical,
   ogImage = "/og-image.jpg"
 }: SEOProps) {
-  const baseUrl = 'https://avizith.vercel.app'; // Vercel free domain
+  const baseUrl = 'https://az-nath.vercel.app'; // Vercel free domain
   
   return (
     <Head>

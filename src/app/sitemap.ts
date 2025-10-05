@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
  
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://avizith.vercel.app' // Vercel free domain
+  const baseUrl = 'https://az-nath.vercel.app' // Vercel free domain
   
   return [
     {

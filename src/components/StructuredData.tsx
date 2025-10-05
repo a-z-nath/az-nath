@@ -7,7 +7,7 @@ export default function StructuredData() {
     "name": "avizith",
     "jobTitle": "Full Stack Developer",
     "description": "Full Stack Developer specializing in Next.js, React, Node.js, and TypeScript. Building modern web applications with cutting-edge technologies.",
-    "url": "https://avizith.vercel.app", // Vercel free domain
+    "url": "https://az-nath.vercel.app", // Vercel free domain
     "image": "https://avatars.githubusercontent.com/u/107170125?s=200&v=4",
     "sameAs": [
       "https://github.com/a-z-nath",

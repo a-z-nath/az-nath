@@ -19,14 +19,14 @@ export const metadata: Metadata = {
   authors: [{ name: "avizith" }],
   creator: "avizith",
   publisher: "avizith",
-  metadataBase: new URL('https://avizith.vercel.app'), // Vercel free domain
+  metadataBase: new URL('https://az-nath.vercel.app'), // Vercel free domain
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: "avizith - Full Stack Developer Portfolio",
     description: "Full Stack Developer specializing in Next.js, React, Node.js, and TypeScript. Building modern web applications with cutting-edge technologies.",
-    url: 'https://avizith.vercel.app', // Vercel free domain
+    url: 'https://az-nath.vercel.app', // Vercel free domain
     siteName: 'avizith Portfolio',
     images: [
       {
