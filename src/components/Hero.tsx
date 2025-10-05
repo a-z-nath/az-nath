@@ -38,6 +38,8 @@ export default function Hero() {
                 <Image
                   src="https://avatars.githubusercontent.com/u/107170125?s=200&v=4" 
                   alt="Avizith Debnath" 
+                  width={200}
+                  height={200}
                   className="w-full h-full rounded-full object-cover transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-105"
                 />
               </div>
