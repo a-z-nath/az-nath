@@ -13,7 +13,7 @@ export default function SEO({
   title = "avizith - Full Stack Developer Portfolio",
   description = "Full Stack Developer specializing in Next.js, React, Node.js, and TypeScript. Building modern web applications with cutting-edge technologies.",
   canonical,
-  ogImage = "/og-image.jpg"
+  ogImage = "/og-image.png"
 }: SEOProps) {
   const baseUrl = 'https://az-nath.vercel.app'; // Vercel free domain
   

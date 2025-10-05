@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     siteName: 'avizith Portfolio',
     images: [
       {
-        url: '/og-image.jpg', // We'll create this
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'avizith - Full Stack Developer',
@@ -43,8 +43,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "avizith - Full Stack Developer Portfolio",
     description: "Full Stack Developer specializing in Next.js, React, Node.js, and TypeScript. Building modern web applications with cutting-edge technologies.",
-    images: ['/og-image.jpg'], // We'll create this
-    creator: '@avizith', // Replace with your actual Twitter handle
+    images: ['/og-image.png'],
+    creator: '@at_avijit', 
   },
   robots: {
     index: true,
