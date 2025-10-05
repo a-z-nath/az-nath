@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/db';
-import { projects } from '@/lib/db/schema';
+import { Project, projects } from '@/lib/db/schema';
 import { eq, desc } from 'drizzle-orm';
 
 // Static cache that persists until manually invalidated
-let cachedProjects: any = null;
+let cachedProjects: {projects: Project[], count: number, lastSync: string | null} | null = null;
 let cacheTimestamp: string | null = null;
 
 // Function to invalidate cache (to be called from sync endpoint)
@@ -51,7 +51,7 @@ export async function GET() {
 
     // Optimize JSON parsing with error handling
     const projectsWithParsedTopics = featuredProjects.map(project => {
-      let parsedTopics = [];
+      let parsedTopics: string[] = [];
       try {
         parsedTopics = project.topics ? JSON.parse(project.topics) : [];
       } catch (e) {

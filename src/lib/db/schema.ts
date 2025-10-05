@@ -35,3 +35,19 @@ export const personalInfo = sqliteTable('personal_info', {
   avatarUrl: text('avatar_url'),
   updatedAt: text('updated_at').default('datetime(\'now\')'),
 });
+
+// export projects data type as interface
+export interface Project {
+  id: number;
+  name: string;
+  description: string | null;
+  html_url: string;
+  homepage: string | null;
+  language: string | null;
+  stargazers_count: number | null;
+  topics: string[];
+  created_at: string | null;
+  updated_at: string | null;
+  featured: boolean | null;
+  display_order: number | null;
+}
