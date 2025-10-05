@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function Hero() {
   const [currentRole, setCurrentRole] = useState(0);
@@ -34,7 +35,7 @@ export default function Hero() {
           <div className="flex justify-center sm:justify-start">
             <div className="relative group">
               <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-primary to-primary/80 p-1">
-                <img 
+                <Image
                   src="https://avatars.githubusercontent.com/u/107170125?s=200&v=4" 
                   alt="Avizith Debnath" 
                   className="w-full h-full rounded-full object-cover transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-105"
