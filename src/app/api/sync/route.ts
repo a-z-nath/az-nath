@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { syncWithGitHub } from '@/lib/sync';
+import { invalidateProjectsCache } from '../projects/route';
 
 export async function POST(request: NextRequest) {
   try {
@@ -18,9 +19,13 @@ export async function POST(request: NextRequest) {
     const result = await syncWithGitHub();
     
     if (result.success) {
+      // Invalidate projects cache after successful sync
+      invalidateProjectsCache();
+      
       return NextResponse.json({
         message: 'Sync completed successfully',
-        stats: result.stats
+        stats: result.stats,
+        cacheInvalidated: true
       });
     } else {
       return NextResponse.json(
