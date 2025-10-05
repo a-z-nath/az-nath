@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { syncWithGitHub } from '@/lib/sync';
-import { invalidateProjectsCache } from '../projects/route';
+import { invalidateProjectsCache, syncWithGitHub } from '@/lib/sync';
 
 export async function POST(request: NextRequest) {
   try {

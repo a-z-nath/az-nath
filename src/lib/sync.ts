@@ -1,6 +1,6 @@
 import { db } from '@/lib/db';
-import { projects } from '@/lib/db/schema';
-import { eq } from 'drizzle-orm';
+import { Project, projects } from '@/lib/db/schema';
+import { desc, eq } from 'drizzle-orm';
 
 interface GitHubRepo {
   id: number;
@@ -121,5 +121,90 @@ export async function syncWithGitHub() {
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error'
     };
+  }
+}
+
+// Static cache that persists until manually invalidated
+let cachedProjects: {projects: Project[], count: number, lastSync: string | null} | null = null;
+let cacheTimestamp: string | null = null;
+
+// Export function to invalidate cache (to be called from sync endpoint)
+export function invalidateProjectsCache() {
+  cachedProjects = null;
+  cacheTimestamp = null;
+  console.log('Projects cache invalidated');
+}
+
+export async function getCachedProjects() {
+  try {
+    // Return cached data if available
+    if (cachedProjects && cacheTimestamp) {
+
+      console.log('Cache hit - returning cached projects', cachedProjects.projects.length);
+      return {response: cachedProjects, cacheTimestamp};
+    }
+
+    console.log('Cache miss - fetching from database');
+
+    // Optimized query: select only needed fields
+    const featuredProjects = await db.select({
+      id: projects.id,
+      name: projects.name,
+      description: projects.description,
+      url: projects.url,
+      homepage: projects.homepage,
+      language: projects.language,
+      stars: projects.stars,
+      topics: projects.topics,
+      createdAt: projects.createdAt,
+      githubUpdatedAt: projects.githubUpdatedAt,
+      updatedAt: projects.updatedAt,
+      isFeatured: projects.isFeatured,
+      displayOrder: projects.displayOrder,
+    })
+      .from(projects)
+      .where(eq(projects.isFeatured, true))
+      .orderBy(desc(projects.stars), desc(projects.githubUpdatedAt));
+
+    // Optimize JSON parsing with error handling
+    const projectsWithParsedTopics = featuredProjects.map(project => {
+      let parsedTopics: string[] = [];
+      try {
+        parsedTopics = project.topics ? JSON.parse(project.topics) : [];
+      } catch (e) {
+        console.warn(`Failed to parse topics for project ${project.id}:`, e);
+        parsedTopics = [];
+      }
+
+      return {
+        id: project.id,
+        name: project.name,
+        description: project.description,
+        html_url: project.url,
+        homepage: project.homepage,
+        language: project.language,
+        stargazers_count: project.stars,
+        topics: parsedTopics,
+        created_at: project.createdAt,
+        updated_at: project.githubUpdatedAt || project.updatedAt,
+        featured: project.isFeatured,
+        display_order: project.displayOrder
+      };
+    });
+
+    const response = {
+      projects: projectsWithParsedTopics,
+      count: featuredProjects.length,
+      lastSync: featuredProjects[0]?.updatedAt || null
+    };
+
+    // Cache the result indefinitely
+    cachedProjects = response;
+    cacheTimestamp = new Date().toISOString();
+    console.log('Projects cached at', cacheTimestamp);
+    return {response, cacheTimestamp};
+  } catch (error) {
+    console.error('Error fetching projects:', error);
+    throw error;
   }
 }
